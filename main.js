@@ -12,11 +12,25 @@ const rl = readline.createInterface({
 
 
 const pigLatin = (word) => {
+  word = word.trim(' ')
+  word = word.toLowerCase()
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
 
-  // Your code here
-
-}
-
+  if(vowels.includes(word[0])) {
+    return word + 'yay'
+  }
+  let constPre = ""
+  for (let i = 0; i < word.length; i++) {
+      const char = word [i]
+      if (vowels.includes(char)) {
+          break;
+        }
+        constPre += char;
+      }
+      return word.substring(constPre.length) + constPre + "ay"
+    }
+      
+      
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
 // to close it ctrl + C
@@ -34,7 +48,7 @@ if (typeof describe === 'function') {
 
   describe('#pigLatin()', () => {
     it('should translate a simple word', () => {
-      assert.equal(pigLatin('car'), 'arcay');
+      assert.equal(pigLatin('car'), 'arcay'); //conconta
       assert.equal(pigLatin('dog'), 'ogday');
     });
     it('should translate a complex word', () => {
